@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,8 +33,10 @@ namespace PaymentAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PaymentAPI", Version = "v1" });
             });
-
-            services.AddDbContext<PaymentDetailContext>(options =>);
+            
+            services.AddDbContext<PaymentDetailContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DevConnection"))
+            );
 
         }
 
