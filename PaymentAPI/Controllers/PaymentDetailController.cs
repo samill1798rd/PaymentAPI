@@ -19,7 +19,6 @@ namespace PaymentAPI.Controllers
             _UnitOfWork = UnitOfWork;
         }
 
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PaymentDetail>>> GetPaymentDetails()
         {
